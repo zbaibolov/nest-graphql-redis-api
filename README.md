@@ -14,7 +14,7 @@ If you haven't installed Redis yet, you can install it using Homebrew (macOS):
 1. Start the Redis Server
     Start the Redis server by running:
 
-        `redis-server`
+        redis-server
 
     This command will start Redis on the default port 6379.
 
@@ -34,6 +34,6 @@ Steps to Import:
 2. Click on Import in the top-left corner.
 3. Select the File tab.
 4. Click on Upload Files.
-5. Navigate to the project directory, go to the postman folder, and select NestJS GraphQL API.postman_collection.json.
+5. Navigate to the project directory, go to the postman folder, and select `NestJS GraphQL API.postman_collection.json`.
 6. Click Open to import the collection.
 
