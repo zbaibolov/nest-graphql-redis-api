@@ -11,8 +11,12 @@ import { redisStore } from 'cache-manager-redis-yet';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db.sqlite',
+      type: 'postgres',
+      host: process.env.DB_HOST || 'localhost',
+      port: parseInt(process.env.DB_PORT || '5432', 10),
+      username: process.env.DB_USER || 'myuser',
+      password: process.env.DB_PASS || 'mypass',
+      database: process.env.DB_NAME || 'mydb',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
@@ -20,13 +24,12 @@ import { redisStore } from 'cache-manager-redis-yet';
       driver: ApolloDriver,
       autoSchemaFile: 'schema.gql',
     }),
-    UserModule,
     CacheModule.register({
       store: redisStore,
-      host: process.env.REDIS_HOST || 'localhost',
-      port: parseInt(process.env.REDIS_PORT || '6379', 10),
+      url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`,
       ttl: 1000,
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
