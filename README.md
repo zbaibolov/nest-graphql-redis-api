@@ -1,29 +1,32 @@
-## Installation
+# NestJS GraphQL + TypeORM + Redis API
+
+This application provides a basic CRUD API with **NestJS**, **TypeORM**, **GraphQL**, and **Redis** for caching. It is fully containerized with Docker, allowing you to spin up **NestJS**, **PostgreSQL**, and **Redis** in one command.
+
+---
+
+## Prerequisites
+
+- [Docker](https://www.docker.com/get-started) installed on your machine  
+- [Docker Compose](https://docs.docker.com/compose/install/) installed  
+
+---
+
+## Getting Started
+
+Clone the repository, then open a terminal in the project root.
+
+### 1. Build and Run Containers
+
+Run the following command to **build and start** all containers (NestJS, Redis, and Postgres):
 
 ```bash
-$ npm install
+docker-compose up --build
 ```
+ * NestJS (app container) is exposed on port 3000.
+ * Redis runs internally on port 6379, mapped to the same port on your host.
+ * PostgreSQL runs on port 5432, also mapped to port 5432 on your host.
 
-## Install Redis
-If you haven't installed Redis yet, you can install it using Homebrew (macOS):
-    
-    brew install redis
-
-## Running the Application
-
-1. Start the Redis Server
-    Start the Redis server by running:
-
-        redis-server
-
-    This command will start Redis on the default port 6379.
-
-2. Run the NestJS Application
-    In a new terminal window (keep Redis running), navigate to the project directory if you're not already there, and start the application:
-
-        npm run start
-
-    The application will start running on http://localhost:3000.
+Once everything starts successfully, you can access the NestJS API at http://localhost:3000
 
 ## Using the API with Postman
 
